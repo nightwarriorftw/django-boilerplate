@@ -10,16 +10,25 @@ services:
       - 8000:8000
     env_file:
       - ./api/.env
+    networks:
+      - coolnetwork
 
   db:
     image: postgres:10-alpine
     env_file:
       - ./api/.env
+
     volumes: 
       - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - coolnetwork
 
   redis:
     image: redis:alpine
+    networks:
+      - coolnetwork
 
   celery:
     restart: always
@@ -30,6 +39,8 @@ services:
       - ./api:/app
     env_file:
       - ./api/.env
+    networks:
+      - coolnetwork
     depends_on:
       - db
       - redis
@@ -37,3 +48,7 @@ services:
 
 volumes:
   pgdata:
+
+networks:
+  coolnetwork:
+    driver: bridge
