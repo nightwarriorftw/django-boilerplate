@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  api:
+    build: api
+    command: ./base/start-server.sh
+    volumes:
+      - ./api/:/app/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./api/.env
+
+  db:
+    image: postgres:10-alpine
+    env_file:
+      - ./api/.env
+    volumes: 
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+
+  celery:
+    restart: always
+    build:
+      context: api
+    command: celery -A base worker -l info
+    volumes:
+      - ./api:/app
+    env_file:
+      - ./api/.env
+    depends_on:
+      - db
+      - redis
+      - api
+
+volumes:
+  pgdata:
