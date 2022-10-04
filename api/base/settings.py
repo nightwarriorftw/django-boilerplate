@@ -43,7 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Custom
     'signupapp',
+
+    # Third Party
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +148,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redis and Celery Conf
 CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = "redis://redis:6379"
+CELERY_IGNORE_RESULT = False
+CELERY_STORE_ERRORS_EVEN_IF_IGNORED = True
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ENABLE_UTC = True 
+CELERY_TIMEZONE = 'UTC' 
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_TASK_TRACK_STARTED = True
+BROKER_CONNECTION_TIMEOUT = 15
+# BROKER_HEARTBEAT = 10 
+# BROKER_HEARTBEAT_CHECKRATE = 2.0
+CELERY_ACKS_LATE = True

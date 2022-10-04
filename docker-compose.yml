@@ -19,7 +19,7 @@ services:
     image: postgres:12
     env_file:
       - ./api/.env
-    volumes: 
+    volumes:
       - ./.data/postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
@@ -44,12 +44,25 @@ services:
       - ./api:/app
     env_file:
       - ./api/.env
+    depends_on:
+      - redis
+      - db
     networks:
       - coolnetwork
+
+  celery-beat:
+    build:
+      context: api
+    command: celery -A base beat -l info
+    volumes:
+      - ./api:/app
+    env_file:
+      - ./api/.env
     depends_on:
-      - db
       - redis
-      - api
+      - db
+    networks:
+      - coolnetwork
 
 networks:
   coolnetwork:
