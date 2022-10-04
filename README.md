@@ -6,8 +6,6 @@
 ## :ledger: Index
 
 - [About](#beginner-about)
-- [Usage](#zap-usage)
-  - [Commands](#package-commands)
 - [Development](#wrench-development)
 - [Credit/Acknowledgment](#star2-creditacknowledgment)
 - [License](#lock-license)
@@ -27,20 +25,13 @@ A raw django boilerplate with async background tasks support
 
 - Install Docker Compose from [here](https://docs.docker.com/compose/install/)
 
-### Create a new `.env` file inside the `api` directory
+### Setup Environment Variables
 
-```.env
-SECRET_KEY='very-strong-key'
-DEBUG=True
-DB_HOST='db-host'
-DB_NAME='db-name'
-DB_USER='db-user'
-DB_PASSWORD='strong-password'
-DB_PORT=5432
-POSTGRES_DB='db-host'
-POSTGRES_USER='db-user'
-POSTGRES_PASSWORD='strong-password'
-```
+1. Move inside `api` directory
+
+2. Copy the `.example.env` file and make a new file `.env`
+
+3. Setup variables
 
 ### Local setup
 
