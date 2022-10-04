@@ -35,7 +35,7 @@ A raw django boilerplate with async background tasks support
 
 ### Local setup
 
-1. Install `venv` and setup
+1. Move inside `api` directory and install `venv`
 
     `python3 -m venv .venv`
 
@@ -47,14 +47,14 @@ A raw django boilerplate with async background tasks support
 
     `pip install -r requirements.txt`
 
-### Start-up the docker
+### Start-up the docker containers
 
 `docker compose up`
 
 ## :star2: Credit/Acknowledgment
 [Aman Verma](https://nightwarriorftw.netlify.app)
   - Github: [nightwarriorftw](https://github.com/nightwarriorftw)
-  - Linkedin: [developer-aman-verma](https://linkedin.com/in/nightwarriorftw)
+  - Linkedin: [nightwarriorftw](https://linkedin.com/in/nightwarriorftw)
   - Twitter: [nightwarriorftw](https://twitter.com/nightwarriorftw)
 
 
