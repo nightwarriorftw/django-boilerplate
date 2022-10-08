@@ -53,7 +53,7 @@ A raw django boilerplate with async background tasks support
 
 ### Run migrations
 
-Open another terminal and run
+Open another terminal, go to same directory and run
 
 `docker compose exec api ./manage.py migrate`
 
