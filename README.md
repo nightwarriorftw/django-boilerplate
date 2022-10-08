@@ -51,6 +51,12 @@ A raw django boilerplate with async background tasks support
 
 `docker compose up`
 
+### Run migrations
+
+Open another terminal and run
+
+`docker compose exec api ./manage.py migrate`
+
 ## :star2: Credit/Acknowledgment
 [Aman Verma](https://nightwarriorftw.netlify.app)
   - Github: [nightwarriorftw](https://github.com/nightwarriorftw)
