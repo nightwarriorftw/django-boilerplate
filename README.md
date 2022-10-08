@@ -12,7 +12,7 @@
 
 ## :beginner: About
 
-A raw django boilerplate with async background tasks support (celery)
+A raw django boilerplate with async background tasks support
 
 
 ## :wrench: Development
