@@ -1,24 +1,28 @@
 FROM python:3.10-alpine
 
-# set work directory
+# Set work directory
 WORKDIR /app
 
-# set environment variables
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install psycopg2
+# Install psycopg2
 RUN apk update \
     && apk add --virtual build-essential gcc python3-dev musl-dev \
     && apk add postgresql-dev \
     && pip install --upgrade pip \
     && pip install psycopg2
 
-# install dependencies
+# Install dependencies
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-# copy project
+# Copy project
 COPY . .
 
+# Collect static files
+RUN python manage.py collectstatic
+
+# Run server
 CMD ["python manage.py runserver"]
